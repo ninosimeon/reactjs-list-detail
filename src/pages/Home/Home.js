@@ -1,11 +1,11 @@
 import { Container } from "@mui/material";
 import React from "react";
-import ContainerExample from "../../containers/ContainerExample/ContainerExample";
+import Cars from "../../containers/Cars/Cars";
 
 const Home = () => {
   return (
     <Container component="main" maxWidth="lg">
-      <ContainerExample />
+      <Cars />
     </Container>
   );
 };
