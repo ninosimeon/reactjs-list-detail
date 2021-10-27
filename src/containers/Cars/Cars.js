@@ -16,8 +16,8 @@ const Cars = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={3}>
-        {cars?.data?.map((car) => (
-          <Car data={car} key={car?.id}/>
+        {cars?.data?.slice(0, 10).map((car) => (
+          <Car data={car} key={car?.id} />
         ))}
       </Grid>
     </Grid>
