@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Pagination, Typography } from "@mui/material";
 import React from "react";
 import Car from "../../components/Car/Car";
 import { useCars } from "./useCars";
@@ -14,13 +14,20 @@ const Cars = () => {
     );
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} md={3}>
-        {cars?.data?.slice(0, 10).map((car) => (
-          <Car data={car} key={car?.id} />
-        ))}
+    <>
+      <Pagination
+        count={cars?.data?.totalPages}
+        page={cars?.data?.currentPage}
+        onChange={(e, p) => cars.fetch(p)}
+      />
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={3}>
+          {cars?.data?.data?.map((car) => (
+            <Car data={car} key={car?.id} />
+          ))}
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 

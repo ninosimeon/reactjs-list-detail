@@ -6,21 +6,27 @@ export const useCars = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
 
-  React.useEffect(() => {
+  const fetch = React.useCallback((page = 1) => {
     setIsLoading(true);
     setIsError(false);
 
-    fetchCars()
+    fetchCars({ p: page })
       .then((data) => {
         setData(data);
       })
       .catch((error) => {
         setIsError(true);
+        console.log({ error });
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
-  return { data, isLoading, isError };
+  React.useEffect(() => {
+    fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return { data, isLoading, isError, fetch };
 };
