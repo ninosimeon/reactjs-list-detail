@@ -13,10 +13,11 @@ export const useCars = () => {
     fetchCars()
       .then((data) => {
         setData(data);
-        setIsLoading(false);
       })
       .catch((error) => {
         setIsError(true);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);
