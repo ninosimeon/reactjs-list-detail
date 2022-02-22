@@ -22,9 +22,20 @@ const Cars = () => {
       />
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
-          {cars?.data?.data?.map((car) => (
-            <Car data={car} key={car?.id} />
-          ))}
+          {cars?.data?.data?.map((car, index) => {
+            if (!cars?.isPreviousTheSame(cars?.data?.data, index)) {
+              return (
+                <React.Fragment key={car?.id}>
+                  <hr style={{ padding: "10px" }} />
+                  {car?.make}
+                  <hr style={{ padding: "10px" }} />
+                  <Car data={car} />
+                </React.Fragment>
+              );
+            }
+
+            return <Car data={car} key={car?.id} />;
+          })}
         </Grid>
       </Grid>
     </>
