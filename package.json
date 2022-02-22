@@ -22,6 +22,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "start-be": "node ./backend/index.js",
+    "pkg-be": "pkg backend/index.js --out-path backend/dist",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
